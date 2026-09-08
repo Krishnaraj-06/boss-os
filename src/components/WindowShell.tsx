@@ -29,13 +29,9 @@ export default function WindowShell({
 }: WindowShellProps) {
   const [localMaximized, setLocalMaximized] =
     useState(isMaximized);
-
   const [localMinimized, setLocalMinimized] =
     useState(isMinimized);
 
-  /*
-   * Sync local state with the central window manager.
-   */
   useEffect(() => {
     setLocalMaximized(isMaximized);
   }, [isMaximized]);
@@ -64,12 +60,6 @@ export default function WindowShell({
     onFocus?.();
   };
 
-  /*
-   * Minimized window
-   *
-   * Instead of completely disappearing, it becomes
-   * a small title bar above the taskbar.
-   */
   if (localMinimized) {
     return (
       <div
@@ -78,9 +68,10 @@ export default function WindowShell({
           handleRestore();
         }}
         style={{
-          left: `${8 + minimizedOffset * 164}px`,
+          left: `${8 + (minimizedOffset % 3) * 164}px`,
+          bottom: `${9 + Math.floor(minimizedOffset / 3) * 36}px`,
         }}
-        className="absolute bottom-9 z-50 flex h-8 w-40 cursor-pointer items-center justify-between rounded border border-zinc-700 bg-zinc-900 px-2 font-mono text-xs shadow-lg transition hover:bg-zinc-800"
+        className="absolute z-50 flex h-8 w-40 cursor-pointer items-center justify-between rounded border border-zinc-700 bg-zinc-900 px-2 font-mono text-xs shadow-lg transition hover:border-zinc-500 hover:bg-zinc-800"
       >
         <div className="flex min-w-0 items-center gap-2">
           <span>{icon}</span>
@@ -90,14 +81,10 @@ export default function WindowShell({
           </span>
         </div>
 
-        <span className="text-zinc-500">
-          ↑
-        </span>
+        <span className="text-zinc-500">↑</span>
       </div>
     );
   }
-
-  const maximized = localMaximized;
 
   return (
     <div
@@ -106,14 +93,14 @@ export default function WindowShell({
         onFocus?.();
       }}
       className={
-        maximized
+        localMaximized
           ? `absolute left-0 right-0 top-0 bottom-8 flex flex-col bg-zinc-950 ${
               isActive ? "z-50" : "z-30"
             }`
-          : `absolute left-5 right-5 top-5 bottom-10 flex flex-col overflow-hidden rounded-lg border bg-zinc-950 shadow-2xl ${
+          : `absolute left-5 right-5 top-5 bottom-10 flex flex-col overflow-hidden rounded-lg border bg-zinc-950 shadow-2xl transition-shadow ${
               isActive
-                ? "z-50 border-zinc-500"
-                : "z-30 border-zinc-700"
+                ? "z-50 border-zinc-500 shadow-2xl"
+                : "z-30 border-zinc-800 shadow-xl"
             }`
       }
     >
@@ -125,7 +112,6 @@ export default function WindowShell({
             : "border-zinc-800 bg-zinc-950"
         }`}
       >
-        {/* Title */}
         <div className="flex items-center gap-2 font-mono text-xs">
           <span>{icon}</span>
 
@@ -138,11 +124,16 @@ export default function WindowShell({
           >
             {title}
           </span>
+
+          {isActive && (
+            <span className="text-[9px] text-zinc-600">
+              ACTIVE
+            </span>
+          )}
         </div>
 
-        {/* Controls */}
+        {/* Window Controls */}
         <div className="flex items-center gap-1">
-          {/* Minimize */}
           <button
             onClick={(event) => {
               event.stopPropagation();
@@ -154,19 +145,21 @@ export default function WindowShell({
             −
           </button>
 
-          {/* Maximize / Restore */}
           <button
             onClick={(event) => {
               event.stopPropagation();
               handleMaximize();
             }}
             className="flex h-6 w-7 items-center justify-center text-zinc-400 transition hover:bg-zinc-800 hover:text-white"
-            title={maximized ? "Restore" : "Maximize"}
+            title={
+              localMaximized
+                ? "Restore"
+                : "Maximize"
+            }
           >
-            {maximized ? "❐" : "□"}
+            {localMaximized ? "❐" : "□"}
           </button>
 
-          {/* Close */}
           <button
             onClick={(event) => {
               event.stopPropagation();
@@ -180,7 +173,7 @@ export default function WindowShell({
         </div>
       </div>
 
-      {/* Content */}
+      {/* Window Content */}
       <div className="min-h-0 flex-1">
         {children}
       </div>
