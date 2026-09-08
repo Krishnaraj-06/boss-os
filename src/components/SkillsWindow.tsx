@@ -26,7 +26,7 @@ export default function SkillsWindow({
       {skills.map((skill) => (
         <span
           key={skill}
-          className="border border-zinc-800 bg-zinc-900 px-3 py-2 text-xs text-zinc-300"
+          className="border border-zinc-800 bg-zinc-900 px-3 py-2 text-xs text-zinc-300 transition hover:border-zinc-600 hover:text-white"
         >
           {skill}
         </span>
@@ -99,14 +99,14 @@ export default function SkillsWindow({
 
           <section className="mb-7">
             <p className="text-xs text-zinc-500">
-              TOOLS & SYSTEMS
+              SYSTEMS & NETWORKING
             </p>
 
             {renderSkills([
               "Git",
               "GitHub",
               "Networking",
-              "Packet Tracer",
+              "Cisco Packet Tracer",
             ])}
           </section>
 
@@ -116,9 +116,13 @@ export default function SkillsWindow({
             </p>
 
             <div className="mt-3 border border-zinc-800 bg-zinc-900 p-4">
-              <p className="text-sm text-zinc-300">
-                ACTIVE
-              </p>
+              <div className="flex items-center gap-2">
+                <span className="h-2 w-2 rounded-full bg-green-500" />
+
+                <p className="text-sm text-zinc-300">
+                  ACTIVE
+                </p>
+              </div>
 
               <p className="mt-2 text-xs text-zinc-600">
                 Always learning. Always building.
