@@ -42,62 +42,75 @@ export default function ContactWindow({
             </p>
 
             <p className="mt-2 text-xs text-zinc-500">
-              Let's build something interesting.
+              Let&apos;s connect and build something useful.
             </p>
           </div>
 
-          <div className="mb-4 border border-zinc-800 bg-zinc-900 p-4 transition hover:border-zinc-600">
+          <section className="space-y-3">
+            <div className="border border-zinc-800 bg-zinc-900 p-4">
+              <p className="text-xs text-zinc-500">
+                EMAIL
+              </p>
+
+              <a
+                href="mailto:your-email@example.com"
+                className="mt-2 block text-sm text-zinc-300 transition hover:text-white"
+              >
+                your-email@example.com
+              </a>
+            </div>
+
+            <div className="border border-zinc-800 bg-zinc-900 p-4">
+              <p className="text-xs text-zinc-500">
+                GITHUB
+              </p>
+
+              <a
+                href="https://github.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-2 block text-sm text-zinc-300 transition hover:text-white"
+              >
+                github.com ↗
+              </a>
+            </div>
+
+            <div className="border border-zinc-800 bg-zinc-900 p-4">
+              <p className="text-xs text-zinc-500">
+                LINKEDIN
+              </p>
+
+              <a
+                href="https://www.linkedin.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-2 block text-sm text-zinc-300 transition hover:text-white"
+              >
+                linkedin.com ↗
+              </a>
+            </div>
+          </section>
+
+          <section className="mt-7">
             <p className="text-xs text-zinc-500">
-              EMAIL
+              AVAILABILITY
             </p>
 
-            <a
-              href="mailto:your-email@example.com"
-              className="mt-2 block text-sm text-zinc-200 transition hover:text-white"
-            >
-              your-email@example.com
-            </a>
-          </div>
+            <div className="mt-3 flex items-center gap-3 border border-zinc-800 bg-zinc-900 p-4">
+              <span className="h-2 w-2 rounded-full bg-green-500" />
 
-          <div className="mb-4 border border-zinc-800 bg-zinc-900 p-4 transition hover:border-zinc-600">
-            <p className="text-xs text-zinc-500">
-              GITHUB
-            </p>
+              <div>
+                <p className="text-sm text-zinc-300">
+                  Available for opportunities
+                </p>
 
-            <a
-              href="https://github.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-2 block text-sm text-zinc-200 transition hover:text-white"
-            >
-              github.com/
-            </a>
-          </div>
-
-          <div className="mb-4 border border-zinc-800 bg-zinc-900 p-4 transition hover:border-zinc-600">
-            <p className="text-xs text-zinc-500">
-              LINKEDIN
-            </p>
-
-            <a
-              href="https://www.linkedin.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-2 block text-sm text-zinc-200 transition hover:text-white"
-            >
-              linkedin.com/
-            </a>
-          </div>
-
-          <div className="mt-8 border-t border-zinc-800 pt-4">
-            <p className="text-xs text-zinc-500">
-              STATUS
-            </p>
-
-            <p className="mt-2 text-sm text-zinc-400">
-              Available for opportunities.
-            </p>
-          </div>
+                <p className="mt-1 text-xs text-zinc-600">
+                  Open to internships, projects, and meaningful
+                  collaborations.
+                </p>
+              </div>
+            </div>
+          </section>
         </div>
       </div>
     </WindowShell>
