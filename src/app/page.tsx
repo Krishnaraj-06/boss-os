@@ -125,9 +125,7 @@ export default function Home() {
   const [showStartMenu, setShowStartMenu] = useState(false);
 
   const [windows, setWindows] =
-    useState<Record<AppName, WindowState>>(
-      initialWindows
-    );
+    useState<Record<AppName, WindowState>>(initialWindows);
 
   const [activeWindow, setActiveWindow] =
     useState<AppName | null>(null);
@@ -251,14 +249,15 @@ export default function Home() {
       },
     }));
   };
-  const handleTaskbarWindowClick = (app: AppName) => {
-  if (activeWindow === app && !windows[app].minimized) {
-    minimizeApp(app);
-    return;
-  }
 
-  focusWindow(app);
-};
+  const handleTaskbarWindowClick = (app: AppName) => {
+    if (activeWindow === app && !windows[app].minimized) {
+      minimizeApp(app);
+      return;
+    }
+
+    focusWindow(app);
+  };
 
   const closeAllWindows = () => {
     setWindows(initialWindows);
@@ -321,23 +320,27 @@ export default function Home() {
     <main className="relative min-h-screen w-full overflow-hidden bg-zinc-950 text-white">
       {/* Identity */}
       {!isDesktop && (
-        <div className="absolute left-6 top-6 z-10">
-          <div className="border border-zinc-800 bg-black px-5 py-2 text-xl font-bold tracking-wide">
-            Krishnaraj Singh
-          </div>
+        <div className="absolute left-5 top-5 z-10 sm:left-8 sm:top-8">
+          <div className="border border-zinc-700 bg-zinc-950/90 px-4 py-3 shadow-xl backdrop-blur-sm sm:px-5">
+            <p className="font-mono text-lg font-semibold tracking-wide text-zinc-100 sm:text-xl">
+              Krishnaraj Singh
+            </p>
 
-          <div className="mt-1 border border-zinc-900 bg-black px-5 py-2 text-sm text-zinc-400">
-            Engineering Student · Builder
-          </div>
+            <div className="mt-1 h-px w-full bg-zinc-800" />
 
-          <div className="mt-1 px-1 font-mono text-[9px] tracking-widest text-zinc-700">
-            BOSS.OS // PERSONAL SYSTEM
+            <p className="mt-2 font-mono text-[10px] tracking-widest text-zinc-500 sm:text-xs">
+              ENGINEERING STUDENT · BUILDER
+            </p>
+
+            <p className="mt-2 font-mono text-[8px] tracking-[0.2em] text-zinc-700">
+              BOSS.OS // PERSONAL SYSTEM
+            </p>
           </div>
         </div>
       )}
 
       {/* Computer */}
-      <div className="flex min-h-screen w-full items-center justify-center">
+      <div className="flex min-h-screen w-full items-center justify-center px-3 sm:px-5">
         <div className="relative w-[600px] max-w-[92vw]">
           {/* Monitor */}
           <div
@@ -346,18 +349,25 @@ export default function Home() {
                 setIsBooting(true);
               }
             }}
-            className="block h-[300px] w-full cursor-pointer rounded-lg border-4 border-zinc-700 bg-zinc-800 p-3 shadow-2xl transition hover:scale-[1.01] sm:h-[350px] sm:border-6 sm:p-4 md:h-[400px] md:border-8 md:p-5"
+            className="group block h-[300px] w-full cursor-pointer rounded-xl border-4 border-zinc-700 bg-zinc-800 p-3 shadow-[0_25px_80px_rgba(0,0,0,0.7)] transition duration-300 hover:scale-[1.01] hover:border-zinc-600 hover:shadow-[0_30px_100px_rgba(0,0,0,0.85)] sm:h-[350px] sm:border-[6px] sm:p-4 md:h-[400px] md:border-8 md:p-5"
           >
-            <div className="relative flex h-full items-center justify-center overflow-hidden bg-black">
+            <div className="relative flex h-full items-center justify-center overflow-hidden bg-black shadow-[inset_0_0_60px_rgba(255,255,255,0.025)]">
+              {/* Screen glow */}
+              <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.025),transparent_65%)]" />
+
               {/* Initial */}
               {!isBooting && (
-                <div className="text-center font-mono">
-                  <p className="text-2xl tracking-widest text-zinc-300">
+                <div className="relative text-center font-mono">
+                  <p className="text-2xl font-medium tracking-[0.25em] text-zinc-200 sm:text-3xl">
                     BOSS.OS
                   </p>
 
-                  <p className="mt-3 text-[10px] tracking-[0.3em] text-zinc-700">
+                  <p className="mt-4 text-[9px] tracking-[0.35em] text-zinc-600 transition group-hover:text-zinc-400">
                     CLICK TO BOOT
+                  </p>
+
+                  <p className="mt-2 text-[8px] tracking-widest text-zinc-800">
+                    v1.0 // READY
                   </p>
                 </div>
               )}
@@ -387,7 +397,7 @@ export default function Home() {
                 <div
                   key={desktopRefreshKey}
                   ref={desktopRef}
-                  className="relative h-full w-full overflow-hidden bg-zinc-900 pb-10 text-left"
+                  className="relative h-full w-full overflow-hidden bg-zinc-950 pb-10 text-left"
                   onClick={() => {
                     setShowStartMenu(false);
                     closeContextMenu();
@@ -395,62 +405,107 @@ export default function Home() {
                   }}
                   onContextMenu={showDesktopContextMenu}
                 >
-                  {/* Desktop Header */}
-                  <div className="flex items-center justify-between border-b border-zinc-800 bg-zinc-950/70 px-4 py-2">
-                    <div>
-                      <p className="font-mono text-xs tracking-widest text-zinc-300">
-                        BOSS.OS
-                      </p>
+                  {/* Retro Desktop Background */}
+                  <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_35%,rgba(255,255,255,0.045),transparent_55%)]" />
+                  <div className="pointer-events-none absolute inset-0 opacity-30 [background-image:linear-gradient(rgba(255,255,255,0.025)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.025)_1px,transparent_1px)] [background-size:24px_24px]" />
+                  <div className="pointer-events-none absolute inset-0 opacity-[0.035] [background-image:repeating-linear-gradient(0deg,transparent,transparent_2px,white_3px)]" />
 
-                      <p className="mt-0.5 font-mono text-[9px] text-zinc-600">
-                        PERSONAL SYSTEM
-                      </p>
+                  {/* Desktop Header */}
+                  <div className="relative z-10 flex h-12 items-center justify-between border-b border-zinc-800/90 bg-zinc-950/85 px-3 backdrop-blur-sm sm:px-4">
+                    <div className="flex items-center gap-3">
+                      <div className="flex h-7 w-7 items-center justify-center rounded border border-zinc-700 bg-zinc-900 text-xs shadow-inner">
+                        ◈
+                      </div>
+
+                      <div>
+                        <div className="flex items-center gap-2">
+                          <p className="font-mono text-xs font-semibold tracking-[0.18em] text-zinc-200">
+                            BOSS.OS
+                          </p>
+                          <span className="rounded border border-zinc-800 bg-zinc-900 px-1.5 py-0.5 font-mono text-[7px] tracking-wider text-zinc-600">
+                            v1.0
+                          </span>
+                        </div>
+
+                        <p className="mt-0.5 font-mono text-[8px] tracking-widest text-zinc-600">
+                          PERSONAL ENGINEERING SYSTEM
+                        </p>
+                      </div>
                     </div>
 
-                    <div className="flex items-center gap-2 font-mono text-[9px] text-zinc-600">
-                      <span className="h-1.5 w-1.5 rounded-full bg-green-500" />
+                    <div className="flex items-center gap-2 rounded border border-zinc-800 bg-zinc-900/70 px-2 py-1 font-mono text-[8px] tracking-wider text-zinc-500">
+                      <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-green-500" />
                       ONLINE
                     </div>
                   </div>
 
-                  {/* Desktop Icons */}
-                  <div className="grid grid-cols-3 gap-x-2 gap-y-3 p-3 sm:gap-x-4 sm:gap-y-5 sm:p-4 md:gap-x-5 md:gap-y-6 md:p-5">
-                    {desktopApps.map((app) => (
-                      <button
-                        key={app.name}
-                        onClick={(event) => {
-                          event.stopPropagation();
-                          setSelectedDesktopApp(app.name);
-                        }}
-                        onDoubleClick={(event) => {
-                          event.stopPropagation();
-                          openApp(app.name);
-                        }}
-                        onContextMenu={(event) => {
-                          showAppContextMenu(
-                            event,
-                            app.name
-                          );
-                        }}
-                        className={`group flex w-20 flex-col items-center gap-2 rounded-md px-2 py-3 text-center transition ${
-                          selectedDesktopApp === app.name
-                            ? "bg-zinc-800/80 ring-1 ring-zinc-600"
-                            : "hover:bg-zinc-800/50"
-                        }`}
-                      >
-                        <div className="flex h-12 w-12 items-center justify-center rounded border border-zinc-800 bg-zinc-950 text-2xl shadow-lg transition group-hover:border-zinc-600">
-                          {app.icon}
-                        </div>
+                  {/* Desktop Workspace */}
+                  <div className="relative z-10 grid grid-cols-3 gap-x-2 gap-y-3 p-3 sm:gap-x-5 sm:gap-y-4 sm:p-4 md:gap-x-7 md:gap-y-5 md:p-5">
+                    {desktopApps.map((app) => {
+                      const isSelected = selectedDesktopApp === app.name;
+                      const isOpen = windows[app.name].open;
 
-                        <p className="mt-2 text-xs text-zinc-300 group-hover:text-white">
-                          {app.label}
-                        </p>
+                      return (
+                        <button
+                          key={app.name}
+                          onClick={(event) => {
+                            event.stopPropagation();
+                            setSelectedDesktopApp(app.name);
+                          }}
+                          onDoubleClick={(event) => {
+                            event.stopPropagation();
+                            openApp(app.name);
+                          }}
+                          onContextMenu={(event) => {
+                            showAppContextMenu(event, app.name);
+                          }}
+                          className={`group flex h-[122px] w-full max-w-24 flex-col items-center justify-start rounded-lg border px-2 py-2.5 text-center transition-all duration-150 ${
+                            isSelected
+                              ? "border-zinc-600 bg-zinc-800/75 shadow-[0_0_24px_rgba(255,255,255,0.04)]"
+                              : "border-transparent hover:border-zinc-800 hover:bg-zinc-900/70"
+                          }`}
+                        >
+                          <div
+                            className={`relative flex h-12 w-12 shrink-0 items-center justify-center rounded-lg border bg-zinc-950 text-2xl shadow-lg transition-all duration-150 sm:h-13 sm:w-13 ${
+                              isSelected
+                                ? "border-zinc-500 shadow-[0_0_18px_rgba(255,255,255,0.06)]"
+                                : "border-zinc-800 group-hover:-translate-y-0.5 group-hover:border-zinc-600"
+                            }`}
+                          >
+                            {app.icon}
 
-                        <p className="mt-1 text-[8px] text-zinc-600">
-                          {app.description}
-                        </p>
-                      </button>
-                    ))}
+                            {isOpen && (
+                              <span className="absolute -right-1 -top-1 h-2 w-2 rounded-full border border-zinc-950 bg-green-500" />
+                            )}
+                          </div>
+
+                          <p
+                            className={`mt-2 text-[11px] font-medium ${
+                              isSelected
+                                ? "text-white"
+                                : "text-zinc-300 group-hover:text-zinc-100"
+                            }`}
+                          >
+                            {app.label}
+                          </p>
+
+                          <p className="mt-1 max-w-20 truncate text-[7px] tracking-wide text-zinc-600">
+                            {app.description}
+                          </p>
+                        </button>
+                      );
+                    })}
+                  </div>
+
+                  {/* Desktop Status */}
+                  <div className="pointer-events-none absolute bottom-10 left-3 right-3 z-10 flex items-center justify-between border-t border-zinc-800/60 pt-2 font-mono text-[7px] tracking-widest text-zinc-700 sm:left-4 sm:right-4">
+                    <span>USER: KRISHNARAJ</span>
+
+                    <span className="hidden sm:inline">
+                      DOUBLE-CLICK TO OPEN
+                    </span>
+
+                    <span>SYS: READY</span>
                   </div>
 
                   {/* PROJECTS */}
@@ -710,7 +765,7 @@ export default function Home() {
                           </button>
 
                           <div className="mt-1 border-t border-zinc-800 px-3 py-2 text-[9px] text-zinc-600">
-                            BOSS.OS v0.3
+                            BOSS.OS v1.0
                           </div>
                         </>
                       ) : (
@@ -816,7 +871,7 @@ export default function Home() {
                             </span>
 
                             <span className="text-zinc-300">
-                              v0.3
+                              v1.0
                             </span>
                           </div>
 
@@ -887,25 +942,25 @@ export default function Home() {
                   )}
 
                   {/* Taskbar */}
-                 <Taskbar
-  onStart={() => {
-    closeContextMenu();
-    setShowStartMenu((current) => !current);
-  }}
-  windows={windows}
-  activeWindow={activeWindow}
-  onWindowClick={handleTaskbarWindowClick}
-/>
+                  <Taskbar
+                    onStart={() => {
+                      closeContextMenu();
+                      setShowStartMenu((current) => !current);
+                    }}
+                    windows={windows}
+                    activeWindow={activeWindow}
+                    onWindowClick={handleTaskbarWindowClick}
+                  />
                 </div>
               )}
             </div>
           </div>
 
           {/* Stand */}
-          <div className="mx-auto h-20 w-32 bg-zinc-700" />
+          <div className="mx-auto h-16 w-24 bg-zinc-700 sm:h-20 sm:w-32" />
 
           {/* Base */}
-          <div className="mx-auto h-5 w-56 rounded bg-zinc-600" />
+          <div className="mx-auto h-4 w-44 rounded bg-zinc-600 sm:h-5 sm:w-56" />
         </div>
       </div>
     </main>

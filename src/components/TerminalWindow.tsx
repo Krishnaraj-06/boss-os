@@ -1,5 +1,4 @@
 import { useState } from "react";
-
 import WindowShell from "./WindowShell";
 
 type AppName =
@@ -41,11 +40,7 @@ const fileSystem: Record<string, string[]> = {
     "resume.pdf",
   ],
 
-  "/projects": [
-    "netsage/",
-    "attendiq/",
-    "payment-system/",
-  ],
+  "/projects": ["netsage/", "attendiq/"],
 
   "/projects/netsage": [
     "README.md",
@@ -53,49 +48,35 @@ const fileSystem: Record<string, string[]> = {
     "results/",
   ],
 
-  "/projects/attendiq": [
-    "README.md",
-  ],
-
-  "/projects/payment-system": [
-    "README.md",
-  ],
+  "/projects/attendiq": ["README.md"],
 };
 
 const readmeFiles: Record<string, string[]> = {
   "/projects/netsage": [
     "NetSage",
     "",
-    "AI-assisted network troubleshooting project.",
+    "AI-assisted network troubleshooting system.",
     "",
     "Focus:",
     "- Network diagnostics",
-    "- AI-assisted analysis",
-    "- Packet Tracer",
-    "- Python",
+    "- Evidence-bound AI analysis",
+    "- Deterministic validation",
+    "- Human review",
+    "- Cisco Packet Tracer",
   ],
 
   "/projects/attendiq": [
     "AttendIQ",
     "",
-    "Attendance intelligence and analytics project.",
+    "Smart attendance management system.",
     "",
     "Focus:",
-    "- Attendance analysis",
-    "- Data analytics",
-    "- Machine learning",
-  ],
-
-  "/projects/payment-system": [
-    "Payment System",
-    "",
-    "Backend payment processing project.",
-    "",
-    "Focus:",
-    "- Payment flows",
-    "- APIs",
-    "- Backend architecture",
-    "- Transaction processing",
+    "- QR attendance",
+    "- Face verification",
+    "- Geolocation validation",
+    "- Real-time updates",
+    "- Analytics",
+    "- ML-based attendance risk prediction",
   ],
 };
 
@@ -110,32 +91,23 @@ const projectDetails: Record<string, string[]> = {
     "- 30 structured troubleshooting cases",
     "- Deterministic Python validation",
     "- Evidence-bound AI diagnosis",
-    "- Human review workflow",
+    "- Human Accept / Edit / Reject review",
     "- Cisco Packet Tracer scenarios",
   ],
 
   attendiq: [
     "AttendIQ",
     "",
-    "Type: Attendance Intelligence",
-    "Stack: Python, Data Analytics, Machine Learning",
+    "Type: Smart Attendance Management",
+    "Stack: Node.js, Express, JavaScript, SQLite, MySQL",
     "",
-    "Focus:",
-    "- Attendance analysis",
-    "- Pattern analysis",
-    "- Analytical insights",
-  ],
-
-  "payment-system": [
-    "Payment System",
-    "",
-    "Type: Payment Processing",
-    "Stack: Node.js, API, Database",
-    "",
-    "Focus:",
-    "- Payment flows",
-    "- Backend architecture",
-    "- Transaction processing",
+    "Highlights:",
+    "- QR-based attendance",
+    "- Face verification",
+    "- Geolocation validation",
+    "- Socket.IO real-time updates",
+    "- Attendance analytics",
+    "- ML-based attendance-risk prediction",
   ],
 };
 
@@ -161,12 +133,13 @@ export default function TerminalWindow({
 
   const [output, setOutput] = useState<string[]>([
     "BOSS.OS Terminal",
+    "────────────────────────────────",
+    "Session initialized successfully.",
     "Type 'help' to see available commands.",
     "",
   ]);
 
-  const [currentDirectory, setCurrentDirectory] =
-    useState("/");
+  const [currentDirectory, setCurrentDirectory] = useState("/");
 
   const addOutput = (lines: string[]) => {
     setOutput((previous) => [...previous, ...lines]);
@@ -218,22 +191,16 @@ export default function TerminalWindow({
       return [];
     }
 
-    return [
-      `cd: ${directory}: No such directory`,
-    ];
+    return [`cd: ${directory}: No such directory`];
   };
 
   const handleCat = (fileName: string): string[] => {
     if (fileName.toLowerCase() !== "readme.md") {
-      return [
-        `cat: ${fileName}: No such file`,
-      ];
+      return [`cat: ${fileName}: No such file`];
     }
 
     if (!readmeFiles[currentDirectory]) {
-      return [
-        "cat: readme.md: No such file",
-      ];
+      return ["cat: readme.md: No such file"];
     }
 
     return readmeFiles[currentDirectory];
@@ -251,7 +218,6 @@ export default function TerminalWindow({
         "Available:",
         "- netsage",
         "- attendiq",
-        "- payment-system",
       ];
     }
 
@@ -274,9 +240,7 @@ export default function TerminalWindow({
       "│   │   ├── README.md",
       "│   │   ├── architecture/",
       "│   │   └── results/",
-      "│   ├── attendiq/",
-      "│   │   └── README.md",
-      "│   └── payment-system/",
+      "│   └── attendiq/",
       "│       └── README.md",
       "├── skills/",
       "├── experience/",
@@ -288,12 +252,13 @@ export default function TerminalWindow({
   const handleStatus = (): string[] => {
     return [
       "BOSS.OS SYSTEM STATUS",
+      "─────────────────────",
       "",
       "System:     ONLINE",
       "Kernel:     BOSS.OS",
       "Session:    ACTIVE",
       "Terminal:   RUNNING",
-      "Projects:   3",
+      "Projects:   2",
       "Mode:       PORTFOLIO",
     ];
   };
@@ -309,27 +274,25 @@ export default function TerminalWindow({
       "",
       "BOSS.OS",
       "────────",
-      "User:       Boss",
+      "User:       Krishnaraj",
       "Role:       Engineering Student",
-      "Projects:   3",
+      "Projects:   2",
       "Focus:      Software / AI / Data / Systems",
       "Terminal:   BOSS Terminal",
     ];
   };
 
-  const handleOpenApp = (
-    app: string
-  ): string[] => {
-    const target = app.toLowerCase() as AppName;
+  const validApps: AppName[] = [
+    "projects",
+    "terminal",
+    "resume",
+    "about",
+    "skills",
+    "contact",
+  ];
 
-    const validApps: AppName[] = [
-      "projects",
-      "terminal",
-      "resume",
-      "about",
-      "skills",
-      "contact",
-    ];
+  const handleOpenApp = (app: string): string[] => {
+    const target = app.toLowerCase() as AppName;
 
     if (!validApps.includes(target)) {
       return [
@@ -343,24 +306,11 @@ export default function TerminalWindow({
     return [`Opening ${target}...`];
   };
 
-  const handleCloseApp = (
-    app: string
-  ): string[] => {
+  const handleCloseApp = (app: string): string[] => {
     const target = app.toLowerCase() as AppName;
 
-    const validApps: AppName[] = [
-      "projects",
-      "terminal",
-      "resume",
-      "about",
-      "skills",
-      "contact",
-    ];
-
     if (!validApps.includes(target)) {
-      return [
-        `close: ${app}: Application not found`,
-      ];
+      return [`close: ${app}: Application not found`];
     }
 
     if (target === "terminal") {
@@ -373,24 +323,11 @@ export default function TerminalWindow({
     return [`Closing ${target}...`];
   };
 
-  const handleMinimizeApp = (
-    app: string
-  ): string[] => {
+  const handleMinimizeApp = (app: string): string[] => {
     const target = app.toLowerCase() as AppName;
 
-    const validApps: AppName[] = [
-      "projects",
-      "terminal",
-      "resume",
-      "about",
-      "skills",
-      "contact",
-    ];
-
     if (!validApps.includes(target)) {
-      return [
-        `minimize: ${app}: Application not found`,
-      ];
+      return [`minimize: ${app}: Application not found`];
     }
 
     if (target === "terminal") {
@@ -417,7 +354,7 @@ export default function TerminalWindow({
           "about                Open About",
           "skills               Open Skills",
           "projects             Open Projects",
-          "projects <name>     Show project details",
+          "projects <name>      Show project details",
           "experience           Show experience",
           "contact              Open Contact",
           "resume               Open Resume",
@@ -436,8 +373,9 @@ export default function TerminalWindow({
 
       case "whoami":
         return [
-          "Boss",
+          "Krishnaraj Singh",
           "Engineering Student",
+          "Builder / Learner",
         ];
 
       case "about":
@@ -461,7 +399,6 @@ export default function TerminalWindow({
           "Available projects:",
           "1. NetSage",
           "2. AttendIQ",
-          "3. Payment System",
         ];
 
       case "experience":
@@ -486,13 +423,19 @@ export default function TerminalWindow({
         return ["Opening Resume..."];
 
       case "open":
-        return handleOpenApp(argument);
+        return argument
+          ? handleOpenApp(argument)
+          : ["Usage: open <app>"];
 
       case "close":
-        return handleCloseApp(argument);
+        return argument
+          ? handleCloseApp(argument)
+          : ["Usage: close <app>"];
 
       case "minimize":
-        return handleMinimizeApp(argument);
+        return argument
+          ? handleMinimizeApp(argument)
+          : ["Usage: minimize <app>"];
 
       case "status":
         return handleStatus();
@@ -571,36 +514,63 @@ export default function TerminalWindow({
       minimizedOffset={minimizedOffset}
     >
       <div className="flex h-full flex-col bg-black font-mono text-xs text-zinc-300">
-        <div className="min-h-0 flex-1 overflow-y-auto p-4">
+        {/* Terminal Header */}
+        <div className="flex h-8 shrink-0 items-center justify-between border-b border-zinc-900 bg-zinc-950 px-3">
+          <div className="flex items-center gap-2">
+            <span className="h-1.5 w-1.5 rounded-full bg-green-500" />
+
+            <span className="text-[9px] tracking-widest text-zinc-600">
+              BOSS TERMINAL
+            </span>
+          </div>
+
+          <span className="text-[8px] text-zinc-700">
+            bash-compatible
+          </span>
+        </div>
+
+        {/* Terminal Output */}
+        <div className="min-h-0 flex-1 overflow-y-auto p-3 sm:p-4">
           {output.map((line, index) => (
             <div
               key={`${line}-${index}`}
-              className="whitespace-pre-wrap leading-5"
+              className={`whitespace-pre-wrap leading-5 ${
+                line.startsWith("boss@boss-os:")
+                  ? "text-zinc-200"
+                  : line.startsWith("Command not found")
+                    ? "text-red-400"
+                    : line.startsWith("Opening")
+                      ? "text-green-400"
+                      : "text-zinc-400"
+              }`}
             >
               {line}
             </div>
           ))}
 
-          <div className="mt-1">
-            {getPrompt()}
+          <div className="mt-1 flex">
+            <span className="mr-1 text-green-500">
+              {getPrompt()}
+            </span>
           </div>
         </div>
 
+        {/* Command Input */}
         <form
           onSubmit={handleSubmit}
-          className="flex shrink-0 border-t border-zinc-800 bg-black px-4 py-2"
+          className="flex shrink-0 items-center border-t border-zinc-800 bg-zinc-950 px-3 py-2"
         >
-          <span className="mr-2 text-zinc-500">
+          <span className="mr-2 shrink-0 text-green-500">
             $
           </span>
 
           <input
             value={command}
-            onChange={(event) =>
-              setCommand(event.target.value)
-            }
+            onChange={(event) => setCommand(event.target.value)}
             autoFocus
-            className="min-w-0 flex-1 bg-transparent text-zinc-200 outline-none"
+            spellCheck={false}
+            autoComplete="off"
+            className="min-w-0 flex-1 bg-transparent text-zinc-200 outline-none placeholder:text-zinc-700"
             placeholder="type a command..."
           />
         </form>

@@ -71,17 +71,19 @@ export default function WindowShell({
           left: `${8 + (minimizedOffset % 3) * 164}px`,
           bottom: `${9 + Math.floor(minimizedOffset / 3) * 36}px`,
         }}
-        className="absolute z-50 flex h-8 w-40 cursor-pointer items-center justify-between rounded border border-zinc-700 bg-zinc-900 px-2 font-mono text-xs shadow-lg transition hover:border-zinc-500 hover:bg-zinc-800"
+        className="absolute z-50 flex h-8 w-40 cursor-pointer items-center justify-between overflow-hidden rounded-md border border-zinc-700 bg-zinc-900 px-2.5 font-mono text-[10px] shadow-xl transition-all duration-150 hover:-translate-y-0.5 hover:border-zinc-500 hover:bg-zinc-800"
       >
         <div className="flex min-w-0 items-center gap-2">
-          <span>{icon}</span>
+          <span className="shrink-0 text-sm">{icon}</span>
 
           <span className="truncate text-zinc-300">
             {title}
           </span>
         </div>
 
-        <span className="text-zinc-500">↑</span>
+        <span className="ml-2 shrink-0 text-zinc-600 transition group-hover:text-zinc-300">
+          ↑
+        </span>
       </div>
     );
   }
@@ -94,55 +96,59 @@ export default function WindowShell({
       }}
       className={
         localMaximized
-          ? `absolute left-0 right-0 top-0 bottom-8 flex flex-col bg-zinc-950 ${
+          ? `absolute inset-x-0 bottom-8 top-0 flex flex-col bg-zinc-950 ${
               isActive ? "z-50" : "z-30"
             }`
-          : `absolute left-5 right-5 top-5 bottom-10 flex flex-col overflow-hidden rounded-lg border bg-zinc-950 shadow-2xl transition-shadow ${
+          : `absolute bottom-10 left-5 right-5 top-5 flex flex-col overflow-hidden rounded-lg border bg-zinc-950 shadow-2xl transition-all duration-150 ${
               isActive
-                ? "z-50 border-zinc-500 shadow-2xl"
+                ? "z-50 border-zinc-600 shadow-[0_20px_60px_rgba(0,0,0,0.65)]"
                 : "z-30 border-zinc-800 shadow-xl"
             }`
       }
     >
-      {/* Window Header */}
+      {/* Window Title Bar */}
       <div
-        className={`flex h-9 shrink-0 items-center justify-between border-b px-3 ${
+        className={`relative flex h-10 shrink-0 items-center justify-between border-b px-3 ${
           isActive
             ? "border-zinc-700 bg-zinc-900"
             : "border-zinc-800 bg-zinc-950"
         }`}
       >
-        <div className="flex items-center gap-2 font-mono text-xs">
-          <span>{icon}</span>
+        {/* Active indicator */}
+        {isActive && (
+          <div className="absolute bottom-0 left-0 top-0 w-px bg-zinc-500" />
+        )}
+
+        <div className="flex min-w-0 items-center gap-2 font-mono text-xs">
+          <span className="shrink-0 text-sm">{icon}</span>
 
           <span
-            className={
-              isActive
-                ? "text-zinc-200"
-                : "text-zinc-500"
-            }
+            className={`truncate ${
+              isActive ? "text-zinc-200" : "text-zinc-500"
+            }`}
           >
             {title}
           </span>
 
           {isActive && (
-            <span className="text-[9px] text-zinc-600">
+            <span className="hidden text-[8px] tracking-widest text-zinc-600 sm:inline">
               ACTIVE
             </span>
           )}
         </div>
 
         {/* Window Controls */}
-        <div className="flex items-center gap-1">
+        <div className="ml-3 flex shrink-0 items-center gap-0.5">
           <button
             onClick={(event) => {
               event.stopPropagation();
               handleMinimize();
             }}
-            className="flex h-6 w-7 items-center justify-center text-zinc-400 transition hover:bg-zinc-800 hover:text-white"
+            className="flex h-7 w-7 items-center justify-center rounded text-zinc-500 transition hover:bg-zinc-800 hover:text-zinc-200"
             title="Minimize"
+            aria-label="Minimize window"
           >
-            −
+            <span className="mb-1 text-sm">−</span>
           </button>
 
           <button
@@ -150,14 +156,17 @@ export default function WindowShell({
               event.stopPropagation();
               handleMaximize();
             }}
-            className="flex h-6 w-7 items-center justify-center text-zinc-400 transition hover:bg-zinc-800 hover:text-white"
-            title={
+            className="flex h-7 w-7 items-center justify-center rounded text-zinc-500 transition hover:bg-zinc-800 hover:text-zinc-200"
+            title={localMaximized ? "Restore" : "Maximize"}
+            aria-label={
               localMaximized
-                ? "Restore"
-                : "Maximize"
+                ? "Restore window"
+                : "Maximize window"
             }
           >
-            {localMaximized ? "❐" : "□"}
+            <span className="text-xs">
+              {localMaximized ? "❐" : "□"}
+            </span>
           </button>
 
           <button
@@ -165,16 +174,17 @@ export default function WindowShell({
               event.stopPropagation();
               onClose();
             }}
-            className="flex h-6 w-7 items-center justify-center text-zinc-400 transition hover:bg-red-900 hover:text-white"
+            className="flex h-7 w-7 items-center justify-center rounded text-zinc-500 transition hover:bg-red-950 hover:text-red-300"
             title="Close"
+            aria-label="Close window"
           >
-            ✕
+            <span className="text-xs">✕</span>
           </button>
         </div>
       </div>
 
       {/* Window Content */}
-      <div className="min-h-0 flex-1">
+      <div className="min-h-0 flex-1 bg-zinc-950">
         {children}
       </div>
     </div>
