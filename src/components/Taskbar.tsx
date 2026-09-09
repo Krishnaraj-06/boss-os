@@ -65,23 +65,21 @@ export default function Taskbar({
   const openApps = apps.filter((app) => windows[app.name].open);
 
   return (
-    <div className="absolute bottom-0 left-0 right-0 z-40 flex h-8 items-center justify-between border-t border-zinc-700 bg-zinc-950 px-2 font-mono text-xs">
-      {/* Left Side */}
+    <div className="absolute bottom-0 left-0 right-0 z-40 flex h-9 items-center justify-between border-t border-zinc-700/80 bg-zinc-950/90 px-2 font-mono text-xs backdrop-blur-sm">
       <div className="flex min-w-0 items-center gap-2">
         <button
           onClick={(event) => {
             event.stopPropagation();
             onStart();
           }}
-          className="border border-zinc-700 bg-zinc-900 px-3 py-1 text-zinc-300 transition hover:border-zinc-500 hover:bg-zinc-800 hover:text-white"
+          className="rounded-lg border border-zinc-700/80 bg-zinc-900/80 px-3 py-1.5 text-[10px] tracking-[0.2em] text-zinc-200 transition hover:border-zinc-500 hover:bg-zinc-800 hover:text-white"
         >
           BOSS
         </button>
 
         <div className="h-4 w-px shrink-0 bg-zinc-700" />
 
-        {/* Open Windows */}
-        <div className="flex min-w-0 items-center gap-1">
+        <div className="flex min-w-0 items-center gap-1.5">
           {openApps.map((app) => {
             const isActive = activeWindow === app.name;
             const isMinimized = windows[app.name].minimized;
@@ -100,9 +98,9 @@ export default function Taskbar({
                       ? `Minimize ${app.label}`
                       : `Focus ${app.label}`
                 }
-                className={`flex h-6 max-w-32 items-center gap-1.5 border px-2 transition ${
+                className={`flex h-6 max-w-32 items-center gap-1.5 rounded-md border px-2 text-[10px] tracking-[0.06em] transition ${
                   isActive
-                    ? "border-zinc-500 bg-zinc-800 text-white"
+                    ? "border-emerald-400/50 bg-zinc-800 text-white shadow-[inset_0_0_0_1px_rgba(52,211,153,0.12)]"
                     : isMinimized
                       ? "border-zinc-800 bg-zinc-950 text-zinc-600 hover:border-zinc-600 hover:bg-zinc-900 hover:text-zinc-300"
                       : "border-zinc-800 bg-zinc-900 text-zinc-400 hover:border-zinc-600 hover:bg-zinc-800 hover:text-zinc-200"
@@ -119,15 +117,14 @@ export default function Taskbar({
           <div className="h-4 w-px shrink-0 bg-zinc-800" />
         )}
 
-        <span className="hidden text-zinc-600 sm:inline">
+        <span className="hidden text-[9px] tracking-[0.18em] text-zinc-600 sm:inline">
           BOSS.OS
         </span>
       </div>
 
-      {/* Right Side */}
-      <div className="ml-2 flex shrink-0 items-center gap-3 text-zinc-400">
-        <span className="flex items-center gap-1.5">
-          <span className="h-1.5 w-1.5 rounded-full bg-green-500" />
+      <div className="ml-2 flex shrink-0 items-center gap-3 text-[9px] tracking-[0.14em] text-zinc-400">
+        <span className="flex items-center gap-1.5 text-emerald-300">
+          <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.8)]" />
           ONLINE
         </span>
 

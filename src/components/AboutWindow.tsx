@@ -66,57 +66,54 @@ export default function AboutWindow({
     >
       <div className="h-full overflow-y-auto bg-zinc-950 font-mono">
         <div className="mx-auto max-w-3xl p-4 sm:p-6 md:p-8">
-          {/* Header */}
           <header className="border-b border-zinc-800 pb-6">
             <div className="flex items-start justify-between gap-4">
               <div>
                 <div className="flex items-center gap-2">
-                  <span className="h-1.5 w-1.5 rounded-full bg-green-500" />
+                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 shadow-[0_0_12px_rgba(52,211,153,0.7)]" />
 
-                  <p className="text-xl tracking-wide text-zinc-100 sm:text-2xl">
+                  <p className="text-xl tracking-[0.2em] text-zinc-100 sm:text-2xl">
                     BOSS
                   </p>
                 </div>
 
-                <p className="mt-2 text-[10px] uppercase tracking-widest text-zinc-500">
+                <p className="mt-2 text-[10px] uppercase tracking-[0.22em] text-zinc-500">
                   Engineering Student · Builder
                 </p>
               </div>
 
-              <div className="flex shrink-0 items-center gap-2 rounded border border-zinc-800 bg-zinc-900 px-3 py-2">
-                <span className="h-1.5 w-1.5 rounded-full bg-green-500" />
+              <div className="flex shrink-0 items-center gap-2 rounded border border-zinc-800 bg-zinc-900/80 px-3 py-2">
+                <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
 
-                <span className="text-[9px] tracking-wider text-zinc-400">
+                <span className="text-[9px] tracking-[0.18em] text-zinc-400">
                   BUILDING
                 </span>
               </div>
             </div>
           </header>
 
-          {/* About */}
           <section className="mt-7">
             <p className="text-[9px] tracking-[0.2em] text-zinc-600">
               01 / ABOUT_ME
             </p>
 
-            <div className="mt-3 rounded-r border-l border-zinc-700 bg-zinc-900/30 px-4 py-4 sm:px-5">
+            <div className="mt-3 rounded-r border-l border-emerald-500/50 bg-zinc-900/30 px-4 py-4 sm:px-5">
               <p className="text-xs leading-6 text-zinc-300 sm:text-sm sm:leading-7">
                 I&apos;m an engineering student who enjoys
-                understanding how things work and turning ideas
-                into working systems.
+                understanding how systems work and turning ideas
+                into working software, tools, and products.
               </p>
 
               <p className="mt-4 text-xs leading-6 text-zinc-400 sm:text-sm sm:leading-7">
-                My interests sit across software engineering,
+                My work sits across software engineering,
                 artificial intelligence, data, systems, and
-                networking. I learn best by building real
-                projects, testing ideas, breaking things, and
-                figuring out why they broke.
+                networking. I learn by building real projects,
+                testing assumptions, debugging failures, and
+                improving the systems that matter.
               </p>
             </div>
           </section>
 
-          {/* Focus */}
           <section className="mt-8">
             <p className="text-[9px] tracking-[0.2em] text-zinc-600">
               02 / CURRENT_FOCUS
@@ -140,14 +137,13 @@ export default function AboutWindow({
             </div>
           </section>
 
-          {/* Building */}
           <section className="mt-8">
             <div className="flex items-end justify-between gap-3">
               <p className="text-[9px] tracking-[0.2em] text-zinc-600">
                 03 / CURRENTLY_BUILDING
               </p>
 
-              <span className="text-[8px] text-zinc-700">
+              <span className="text-[8px] tracking-[0.18em] text-zinc-700">
                 {currentProjects.length} ACTIVE
               </span>
             </div>
@@ -168,7 +164,7 @@ export default function AboutWindow({
                     </span>
                   </div>
 
-                  <span className="shrink-0 text-[8px] text-zinc-600 sm:text-[9px]">
+                  <span className="shrink-0 text-[8px] tracking-[0.16em] text-zinc-600 sm:text-[9px]">
                     {project.type}
                   </span>
                 </div>
@@ -176,7 +172,6 @@ export default function AboutWindow({
             </div>
           </section>
 
-          {/* Engineering Philosophy */}
           <section className="mt-8">
             <p className="text-[9px] tracking-[0.2em] text-zinc-600">
               04 / ENGINEERING_MODE
@@ -209,7 +204,6 @@ export default function AboutWindow({
             </div>
           </section>
 
-          {/* Mindset */}
           <section className="mt-8">
             <p className="text-[9px] tracking-[0.2em] text-zinc-600">
               05 / MINDSET
@@ -221,30 +215,29 @@ export default function AboutWindow({
                 <span className="text-zinc-700">→</span>
                 <span>Break</span>
                 <span className="text-zinc-700">→</span>
-                <span>Understand</span>
+                <span>Debug</span>
                 <span className="text-zinc-700">→</span>
                 <span>Improve</span>
               </div>
 
-              <p className="mt-4 text-center text-[9px] text-zinc-600">
-                Learning by building and iterating.
+              <p className="mt-4 text-center text-[9px] tracking-[0.12em] text-zinc-600">
+                BUILD → BREAK → DEBUG → LEARN → IMPROVE
               </p>
             </div>
           </section>
 
-          {/* Status */}
           <section className="mt-8 pb-2">
             <p className="text-[9px] tracking-[0.2em] text-zinc-600">
               06 / STATUS
             </p>
 
             <div className="mt-4 flex items-center justify-between rounded border border-zinc-800 bg-zinc-900/60 px-4 py-3">
-              <span className="text-[10px] text-zinc-500 sm:text-xs">
+              <span className="text-[10px] tracking-[0.14em] text-zinc-500 sm:text-xs">
                 System status
               </span>
 
               <div className="flex items-center gap-2">
-                <span className="h-1.5 w-1.5 rounded-full bg-green-500" />
+                <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
 
                 <span className="text-[10px] text-zinc-300 sm:text-xs">
                   ACTIVE
@@ -253,7 +246,6 @@ export default function AboutWindow({
             </div>
           </section>
 
-          {/* Footer */}
           <div className="mt-5 flex items-center justify-between border-t border-zinc-900 pt-4 text-[7px] tracking-[0.2em] text-zinc-700">
             <span>BOSS.OS / PROFILE</span>
             <span>BUILDING</span>

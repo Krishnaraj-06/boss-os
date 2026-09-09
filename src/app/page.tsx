@@ -321,18 +321,18 @@ export default function Home() {
       {/* Identity */}
       {!isDesktop && (
         <div className="absolute left-5 top-5 z-10 sm:left-8 sm:top-8">
-          <div className="border border-zinc-700 bg-zinc-950/90 px-4 py-3 shadow-xl backdrop-blur-sm sm:px-5">
-            <p className="font-mono text-lg font-semibold tracking-wide text-zinc-100 sm:text-xl">
-              Krishnaraj Singh
+          <div className="border border-zinc-700/80 bg-zinc-950/80 px-4 py-3 shadow-[0_0_30px_rgba(94,234,212,0.08)] backdrop-blur-sm sm:px-5">
+            <p className="font-mono text-lg font-semibold tracking-[0.18em] text-zinc-100 sm:text-xl">
+              KRISHNARAJ SINGH
             </p>
 
             <div className="mt-1 h-px w-full bg-zinc-800" />
 
-            <p className="mt-2 font-mono text-[10px] tracking-widest text-zinc-500 sm:text-xs">
+            <p className="mt-2 font-mono text-[10px] tracking-[0.26em] text-zinc-400 sm:text-xs">
               ENGINEERING STUDENT · BUILDER
             </p>
 
-            <p className="mt-2 font-mono text-[8px] tracking-[0.2em] text-zinc-700">
+            <p className="mt-2 font-mono text-[8px] tracking-[0.28em] text-zinc-600">
               BOSS.OS // PERSONAL SYSTEM
             </p>
           </div>
@@ -349,55 +349,75 @@ export default function Home() {
                 setIsBooting(true);
               }
             }}
-            className="group block h-[300px] w-full cursor-pointer rounded-xl border-4 border-zinc-700 bg-zinc-800 p-3 shadow-[0_25px_80px_rgba(0,0,0,0.7)] transition duration-300 hover:scale-[1.01] hover:border-zinc-600 hover:shadow-[0_30px_100px_rgba(0,0,0,0.85)] sm:h-[350px] sm:border-[6px] sm:p-4 md:h-[400px] md:border-8 md:p-5"
+            className="group block h-[300px] w-full cursor-pointer rounded-2xl border-4 border-zinc-700 bg-zinc-800 p-3 shadow-[0_30px_100px_rgba(0,0,0,0.68)] transition duration-300 hover:scale-[1.01] hover:border-zinc-600 hover:shadow-[0_35px_120px_rgba(0,0,0,0.8)] sm:h-[350px] sm:border-[6px] sm:p-4 md:h-[400px] md:border-8 md:p-5"
           >
-            <div className="relative flex h-full items-center justify-center overflow-hidden bg-black shadow-[inset_0_0_60px_rgba(255,255,255,0.025)]">
-              {/* Screen glow */}
-              <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.025),transparent_65%)]" />
+            <div className="relative flex h-full items-center justify-center overflow-hidden bg-[#020812] shadow-[inset_0_0_60px_rgba(94,234,212,0.04)]">
+              <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(148,163,184,0.08),transparent_58%)]" />
+              <div className="pointer-events-none absolute inset-0 opacity-[0.12] [background-image:repeating-linear-gradient(0deg,transparent,transparent_2px,rgba(255,255,255,0.35)_3px)]" />
 
-              {/* Initial */}
               {!isBooting && (
-                <div className="relative text-center font-mono">
-                  <p className="text-2xl font-medium tracking-[0.25em] text-zinc-200 sm:text-3xl">
+                <div className="relative z-10 max-w-md px-5 text-center font-mono">
+                  <p className="text-[11px] tracking-[0.42em] text-zinc-500">
+                    KRISHNARAJ SINGH
+                  </p>
+
+                  <p className="mt-5 text-[11px] tracking-[0.32em] text-emerald-300/80">
+                    ENGINEERING STUDENT · BUILDER
+                  </p>
+
+                  <div className="mt-6 h-px w-20 bg-gradient-to-r from-transparent via-zinc-500 to-transparent" />
+
+                  <p className="mt-6 text-2xl font-semibold tracking-[0.28em] text-zinc-100 sm:text-3xl">
                     BOSS.OS
                   </p>
 
-                  <p className="mt-4 text-[9px] tracking-[0.35em] text-zinc-600 transition group-hover:text-zinc-400">
-                    CLICK TO BOOT
+                  <p className="mt-5 text-[10px] leading-6 tracking-[0.16em] text-zinc-500 sm:text-[11px]">
+                    BUILDING PRACTICAL SOFTWARE, AI SYSTEMS,
+                    <br /> DATA-DRIVEN TOOLS, AND ENGINEERING PROJECTS.
                   </p>
 
-                  <p className="mt-2 text-[8px] tracking-widest text-zinc-800">
-                    v1.0 // READY
-                  </p>
+                  <button
+                    type="button"
+                    className="mt-7 inline-flex items-center gap-3 border border-zinc-600/80 bg-zinc-950/80 px-5 py-2.5 text-[9px] tracking-[0.34em] text-zinc-200 transition hover:border-emerald-400/70 hover:text-emerald-200"
+                  >
+                    ENTER SYSTEM
+                    <span className="text-base text-emerald-300">→</span>
+                  </button>
                 </div>
               )}
 
-              {/* Boot */}
               {isBooting && !isDesktop && (
-                <div className="w-64 font-mono">
-                  <p className="mb-5 text-center text-xl tracking-widest">
+                <div className="relative z-10 w-[82%] max-w-xs font-mono">
+                  <p className="mb-4 text-center text-[11px] tracking-[0.36em] text-zinc-400">
+                    KRISHNARAJ SINGH
+                  </p>
+
+                  <p className="mb-7 text-center text-2xl tracking-[0.28em] text-zinc-100">
                     BOSS.OS
                   </p>
 
-                  <div className="space-y-2 text-xs text-zinc-500">
-                    <p>[ OK ] Initializing system</p>
-                    <p>[ OK ] Loading kernel</p>
-                    <p>[ OK ] Mounting filesystem</p>
+                  <div className="space-y-2 text-[10px] text-zinc-500">
+                    <p>[ OK ] Initializing personal system</p>
+                    <p>[ OK ] Loading engineering profile</p>
+                    <p>[ OK ] Mounting project stack</p>
                     <p>[ OK ] Starting user session</p>
                   </div>
 
-                  <p className="mt-5 text-center text-xs text-zinc-400">
-                    SYSTEM BOOTING...
+                  <div className="mt-6 h-1.5 overflow-hidden border border-zinc-800 bg-zinc-950">
+                    <div className="h-full w-1/2 animate-pulse bg-gradient-to-r from-emerald-400 via-zinc-200 to-emerald-400" />
+                  </div>
+
+                  <p className="mt-4 text-center text-[9px] tracking-[0.28em] text-zinc-500">
+                    BOOTING...
                   </p>
                 </div>
               )}
 
-              {/* Desktop */}
               {isDesktop && (
                 <div
                   key={desktopRefreshKey}
                   ref={desktopRef}
-                  className="relative h-full w-full overflow-hidden bg-zinc-950 pb-10 text-left"
+                  className="relative h-full w-full overflow-hidden bg-[#040b13] pb-10 text-left"
                   onClick={() => {
                     setShowStartMenu(false);
                     closeContextMenu();

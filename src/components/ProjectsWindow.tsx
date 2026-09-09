@@ -61,39 +61,36 @@ export default function ProjectsWindow({
       <div className="h-full overflow-y-auto bg-zinc-950 font-mono">
         {!selected ? (
           <div className="mx-auto max-w-4xl p-4 sm:p-6 md:p-8">
-            {/* Header */}
             <div className="mb-6 border-b border-zinc-800 pb-5 sm:mb-8">
               <div className="flex items-end justify-between gap-4">
                 <div>
                   <div className="flex items-center gap-2">
-                    <span className="h-1.5 w-1.5 rounded-full bg-green-500" />
+                    <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 shadow-[0_0_12px_rgba(52,211,153,0.7)]" />
 
-                    <p className="text-lg tracking-wide text-zinc-100 sm:text-xl">
+                    <p className="text-lg tracking-[0.18em] text-zinc-100 sm:text-xl">
                       PROJECTS
                     </p>
                   </div>
 
-                  <p className="mt-2 text-[10px] tracking-widest text-zinc-600">
+                  <p className="mt-2 text-[10px] tracking-[0.24em] text-zinc-600">
                     ENGINEERING WORK / SELECTED BUILDS
                   </p>
                 </div>
 
-                <div className="shrink-0 border border-zinc-800 bg-zinc-900 px-2.5 py-1.5 text-[9px] text-zinc-500">
+                <div className="shrink-0 border border-zinc-800 bg-zinc-900/80 px-2.5 py-1.5 text-[9px] tracking-[0.18em] text-zinc-500">
                   {String(projects.length).padStart(2, "0")} PROJECTS
                 </div>
               </div>
             </div>
 
-            {/* Project List */}
             <div className="space-y-3">
               {projects.map((project, index) => (
                 <button
                   key={project.name}
                   onClick={() => onSelectProject(project.name)}
-                  className="group relative w-full overflow-hidden rounded-lg border border-zinc-800 bg-zinc-900/70 p-4 text-left transition-all duration-200 hover:-translate-y-0.5 hover:border-zinc-600 hover:bg-zinc-900 hover:shadow-[0_12px_35px_rgba(0,0,0,0.3)] sm:p-5"
+                  className="group relative w-full overflow-hidden rounded-xl border border-zinc-800 bg-zinc-900/70 p-4 text-left transition-all duration-200 hover:-translate-y-0.5 hover:border-zinc-600 hover:bg-zinc-900 hover:shadow-[0_18px_40px_rgba(2,6,23,0.35)] sm:p-5"
                 >
-                  {/* Hover accent */}
-                  <div className="absolute bottom-0 left-0 top-0 w-px bg-zinc-700 opacity-0 transition-opacity group-hover:opacity-100" />
+                  <div className="absolute inset-y-0 left-0 w-0.5 bg-gradient-to-b from-transparent via-emerald-300/60 to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
 
                   <div className="flex items-start gap-3 sm:gap-4">
                     <span className="pt-0.5 text-[10px] text-zinc-700">
@@ -107,7 +104,7 @@ export default function ProjectsWindow({
                             {project.name}
                           </p>
 
-                          <p className="mt-1 text-[9px] uppercase tracking-wider text-zinc-600 sm:text-[10px]">
+                          <p className="mt-1 text-[9px] uppercase tracking-[0.18em] text-zinc-600 sm:text-[10px]">
                             {project.type}
                           </p>
                         </div>
@@ -125,7 +122,7 @@ export default function ProjectsWindow({
                         {project.tech.map((technology) => (
                           <span
                             key={technology}
-                            className="rounded border border-zinc-800 bg-zinc-950 px-2 py-1 text-[9px] text-zinc-500 transition group-hover:border-zinc-700 group-hover:text-zinc-400 sm:text-[10px]"
+                            className="rounded border border-zinc-800 bg-zinc-950/80 px-2 py-1 text-[9px] text-zinc-500 transition group-hover:border-zinc-700 group-hover:text-zinc-400 sm:text-[10px]"
                           >
                             {technology}
                           </span>
@@ -137,8 +134,7 @@ export default function ProjectsWindow({
               ))}
             </div>
 
-            {/* Footer */}
-            <div className="mt-6 flex items-center justify-between border-t border-zinc-900 pt-4 text-[8px] tracking-widest text-zinc-700">
+            <div className="mt-6 flex items-center justify-between border-t border-zinc-900 pt-4 text-[8px] tracking-[0.22em] text-zinc-700">
               <span>BUILD / TEST / DEBUG / IMPROVE</span>
               <span>STATUS: ACTIVE</span>
             </div>
