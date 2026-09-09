@@ -37,10 +37,7 @@ export default function ContactWindow({
       <div className="h-full overflow-y-auto bg-zinc-950 p-6 font-mono">
         <div className="mx-auto max-w-xl">
           <div className="mb-8">
-            <p className="text-lg text-zinc-200">
-              CONTACT
-            </p>
-
+            <p className="text-lg text-zinc-200">CONTACT</p>
             <p className="mt-2 text-xs text-zinc-500">
               Let&apos;s connect and build something useful.
             </p>
@@ -48,53 +45,42 @@ export default function ContactWindow({
 
           <section className="space-y-3">
             <div className="border border-zinc-800 bg-zinc-900 p-4">
-              <p className="text-xs text-zinc-500">
-                EMAIL
-              </p>
-
+              <p className="text-xs text-zinc-500">EMAIL</p>
               <a
-                href="mailto:your-email@example.com"
-                className="mt-2 block text-sm text-zinc-300 transition hover:text-white"
+                href="mailto:singhkrishnaraj027@gmail.com"
+                className="mt-2 block break-all text-sm text-zinc-300 transition hover:text-white"
               >
-                your-email@example.com
+                singhkrishnaraj027@gmail.com
               </a>
             </div>
 
             <div className="border border-zinc-800 bg-zinc-900 p-4">
-              <p className="text-xs text-zinc-500">
-                GITHUB
-              </p>
-
+              <p className="text-xs text-zinc-500">GITHUB</p>
               <a
-                href="https://github.com/"
+                href="https://github.com/Krishnaraj-06"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-2 block text-sm text-zinc-300 transition hover:text-white"
               >
-                github.com ↗
+                github.com/Krishnaraj-06 ↗
               </a>
             </div>
 
             <div className="border border-zinc-800 bg-zinc-900 p-4">
-              <p className="text-xs text-zinc-500">
-                LINKEDIN
-              </p>
-
+              <p className="text-xs text-zinc-500">LINKEDIN</p>
               <a
-                href="https://www.linkedin.com/"
+                href="https://www.linkedin.com/in/krishnarajsingh06/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-2 block text-sm text-zinc-300 transition hover:text-white"
               >
-                linkedin.com ↗
+                linkedin.com/in/krishnarajsingh06 ↗
               </a>
             </div>
           </section>
 
           <section className="mt-7">
-            <p className="text-xs text-zinc-500">
-              AVAILABILITY
-            </p>
+            <p className="text-xs text-zinc-500">AVAILABILITY</p>
 
             <div className="mt-3 flex items-center gap-3 border border-zinc-800 bg-zinc-900 p-4">
               <span className="h-2 w-2 rounded-full bg-green-500" />
@@ -105,8 +91,7 @@ export default function ContactWindow({
                 </p>
 
                 <p className="mt-1 text-xs text-zinc-600">
-                  Open to internships, projects, and meaningful
-                  collaborations.
+                  Open to internships, projects, and meaningful collaborations.
                 </p>
               </div>
             </div>

@@ -323,11 +323,15 @@ export default function Home() {
       {!isDesktop && (
         <div className="absolute left-6 top-6 z-10">
           <div className="border border-zinc-800 bg-black px-5 py-2 text-xl font-bold tracking-wide">
-            Boss
+            Krishnaraj Singh
           </div>
 
           <div className="mt-1 border border-zinc-900 bg-black px-5 py-2 text-sm text-zinc-400">
-            Engineering Student
+            Engineering Student · Builder
+          </div>
+
+          <div className="mt-1 px-1 font-mono text-[9px] tracking-widest text-zinc-700">
+            BOSS.OS // PERSONAL SYSTEM
           </div>
         </div>
       )}
@@ -342,7 +346,7 @@ export default function Home() {
                 setIsBooting(true);
               }
             }}
-            className="block h-[400px] w-full cursor-pointer rounded-lg border-8 border-zinc-700 bg-zinc-800 p-5 shadow-2xl transition hover:scale-[1.01]"
+            className="block h-[300px] w-full cursor-pointer rounded-lg border-4 border-zinc-700 bg-zinc-800 p-3 shadow-2xl transition hover:scale-[1.01] sm:h-[350px] sm:border-6 sm:p-4 md:h-[400px] md:border-8 md:p-5"
           >
             <div className="relative flex h-full items-center justify-center overflow-hidden bg-black">
               {/* Initial */}
@@ -410,7 +414,7 @@ export default function Home() {
                   </div>
 
                   {/* Desktop Icons */}
-                  <div className="grid grid-cols-3 gap-x-5 gap-y-6 p-5">
+                  <div className="grid grid-cols-3 gap-x-2 gap-y-3 p-3 sm:gap-x-4 sm:gap-y-5 sm:p-4 md:gap-x-5 md:gap-y-6 md:p-5">
                     {desktopApps.map((app) => (
                       <button
                         key={app.name}

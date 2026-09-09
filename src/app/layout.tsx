@@ -13,9 +13,20 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "BOSS.OS",
+  title: "Krishnaraj Singh | BOSS.OS",
   description:
-    "BOSS.OS — an interactive engineering portfolio built as a retro operating system.",
+    "Krishnaraj Singh — engineering student and builder exploring software engineering, AI, data, systems, and networking through real-world projects.",
+  keywords: [
+    "Krishnaraj Singh",
+    "Software Engineering",
+    "Artificial Intelligence",
+    "Machine Learning",
+    "Data Analytics",
+    "Networking",
+    "BOSS.OS",
+  ],
+  authors: [{ name: "Krishnaraj Singh" }],
+  creator: "Krishnaraj Singh",
 };
 
 export default function RootLayout({
